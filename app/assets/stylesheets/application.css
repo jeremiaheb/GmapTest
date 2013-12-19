@@ -11,3 +11,8 @@
  *= require_self
  *= require_tree .
  */
+
+
+.gm-style-iw {
+  width: 200px !important;
+}
