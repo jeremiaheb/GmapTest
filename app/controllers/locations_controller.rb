@@ -8,10 +8,10 @@ class LocationsController < ApplicationController
     @primaryJson = []
     @alternateJson = []
     @primaryLocations.each do |loc|
-      @primaryJson << { site: loc.site, latitude: loc.latitude, longitude: loc.longitude, iconCode: loc.getIconCode }
+      @primaryJson << { site: loc.site, latitude: loc.latitude, longitude: loc.longitude, level: loc.level, iconCode: loc.getIconCode }
     end
     @alternateLocations.each do |loc|
-      @alternateJson << { site: loc.site, latitude: loc.latitude, longitude: loc.longitude, iconCode: loc.getIconCode }
+      @alternateJson << { site: loc.site, latitude: loc.latitude, longitude: loc.longitude, level: loc.level, iconCode: loc.getIconCode }
     end
     respond_to do |format|
       format.html # index.html.erb

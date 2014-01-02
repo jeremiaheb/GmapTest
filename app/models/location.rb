@@ -6,6 +6,6 @@ class Location < ActiveRecord::Base
   scope :primary,        lambda { where(level: 1) }
 
   def getIconCode
-    [self.level, self.need, self.color, self.reserved].join("")
+    [self.need, self.color].join("")
   end
 end

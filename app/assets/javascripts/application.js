@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require underscore
-//= require gmaps/google
 //= require_tree 
 
 $(document).ready(function(){
@@ -28,24 +27,35 @@ $(document).ready(function(){
             "</div>"
   };
 
-  function getMarkerPath(iconCode) {
-    switch (iconCode)
-    {
-      case "2212":
-        return "/assets/mm_20_black.png";
-        break;
-      case "1112":
-        return "/assets/mm_20_white.png";
-        break;
-      case "1122":
-        return "/assets/mm_20_green.png";
-        break;
-      case "1232":
-        return "/assets/mm_20_yellow.png";
-        break;
-      case "1242":
-        return "/assets/mm_20_purple.png";
-        break;
+  function getMarkerPath(iconLevel, iconCode) {
+    if (iconLevel == 2) { 
+      return "assets/mm_20_black.png";
+     }
+    else if ( iconCode >= 30 ) {
+      return "assets/mm_20_purple.png";
+    }
+    else {  
+      switch (iconCode)
+      {
+        case "11":
+          return "/assets/mm_20_white.png";
+          break;
+        case "12":
+          return "/assets/mm_20_green.png";
+          break;
+        case "21":
+          return "/assets/WhtieTriangle.png";
+          break;
+        case "22":
+          return "/assets/GreenTriangle.png";
+          break;
+        case "23":
+          return "/assets/YellowTriangle.png";
+          break;
+        case "24":
+          return "/assets/OrangeTriangle.png";
+          break;
+      }
     }
   };
   
@@ -67,13 +77,14 @@ $(document).ready(function(){
           map: map,
           title: obj.site,
           content: setInfoWindowContent(obj.site, obj.latitude, obj.longitude),
-          icon: getMarkerPath(obj.iconCode)
+          icon: getMarkerPath(obj.level, obj.iconCode)
       });
      
       google.maps.event.addListener(marker, 'click', function(){
         infowindow.setContent(this.content);
         infowindow.open(map, this);
       });
+
     });
     
     $.each(alternateLocationData, function(i,obj){
@@ -82,7 +93,7 @@ $(document).ready(function(){
           position: latlng,
           title: obj.site,
           content: setInfoWindowContent(obj.site, obj.latitude, obj.longitude),
-          icon: getMarkerPath(obj.iconCode)
+          icon: getMarkerPath(obj.level, obj.iconCode)
       });
       markers.push(marker);
      
@@ -92,6 +103,15 @@ $(document).ready(function(){
       });
     });
 
+     google.maps.event.addListener(map, 'click', function(e) { //important listener          
+        var theBounds = map.getBounds();
+          for (var i = 0; i < markers.length; i++) {
+            if (markers[i].visible == true) {
+              console.log(theBounds.contains(markers[i].position));
+            }
+          };
+                 
+     });
     map.fitBounds(bounds);
   }
 
