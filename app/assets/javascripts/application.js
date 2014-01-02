@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require twitter/bootstrap
 //= require underscore
 //= require_tree 
 
@@ -44,7 +45,7 @@ $(document).ready(function(){
           return "/assets/mm_20_green.png";
           break;
         case "21":
-          return "/assets/WhtieTriangle.png";
+          return "/assets/WhiteTriangle.png";
           break;
         case "22":
           return "/assets/GreenTriangle.png";

@@ -1,6 +1,8 @@
 GmapTest::Application.routes.draw do
+  root :to => 'locations#index'
   resources :locations
-
+  match 'sefcriMap' => "locations#sefcriMap"
+  match 'usviMap' => "locations#usviMap"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

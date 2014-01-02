@@ -1,0 +1,28 @@
+<table class="legend" border="0">
+  <tr>
+    <th>legend</th>
+    <th></th>
+  </tr>
+  <tr>
+    <td><img src="/assets/mm_20_yellow.png" /></td>
+    <td>Completed</td>
+   <tr>
+    <td><img src="/assets/mm_20_green.png" /></td>
+    <td>On Hold</td>
+  </tr> </tr>
+  <tr>
+    <td><img src="/assets/mm_20_purple.png" /></td>
+    <td>Primary (core)</td>
+  </tr>
+  <% if controller.action_name =~ /sefcriMap/  %>
+    <tr>
+      <td><img src="/assets/mm_20_white.png" /></td>
+      <td>Primary (Tier2) </td>
+    </tr> 
+  <% end %>
+  <tr>
+    <td><img src="/assets/mm_20_black.png" /></td>
+    <td>Alternate</td>
+  </tr>
+</table>
+

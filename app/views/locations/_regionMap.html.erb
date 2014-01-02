@@ -1,0 +1,36 @@
+
+<script>
+  var primaryLocations = <%= raw @primaryJson.to_json %>
+  var alternateLocations = <%= raw @alternateJson.to_json %>
+</script>
+
+<div class="container">
+  <div class="row">
+    <div class="span10">
+      <div id="floatingMap">
+        <h3 class="head1">Map</h3>
+          <div id="map_canvas" style='width: 100%; height: 500px;'></div>
+          <%= button_tag "Show Alternates", { :class => "btn", :id => "showMarkers" } %>
+          <%= button_tag "Hide Alternates", { :class => "btn", :id => "clearMarkers" } %>
+      </div>
+    </div>
+    <div class="span2 sideBar">
+      <%= render 'legend' %>
+    </div>
+  </div>
+
+  <div class='row'>
+  <div id="searchBox">
+    <%= form_tag({}, {:method => :get}) do %>
+      <p>
+        <%= text_field_tag :search, params[:search], :autocomplete => :off %>
+        <%= submit_tag "Site Name Search", :name => nil   %>
+      </p>
+    <% end %>
+  </div>
+    <div class="span12">
+      <%= render 'siteTable' %>
+    </div>
+  </div>
+</div>
+

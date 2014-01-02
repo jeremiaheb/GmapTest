@@ -3,8 +3,16 @@ class LocationsController < ApplicationController
   # GET /locations.json
   def index
     @locations = Location.all
-    @primaryLocations = Location.primary.all
-    @alternateLocations = Location.alternate.all
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json
+    end
+  end
+
+  def regionMap(reg)
+    @locations = Location.region(reg).search(params[:search])
+    @primaryLocations = Location.region(reg).primary.all
+    @alternateLocations = Location.region(reg).alternate.all
     @primaryJson = []
     @alternateJson = []
     @primaryLocations.each do |loc|
@@ -18,6 +26,14 @@ class LocationsController < ApplicationController
       format.json { render json: @primaryJson.to_json }
       format.json { render json: @alternateJson.to_json }
     end
+  end
+  
+  def sefcriMap
+    regionMap(3)
+  end
+
+  def usviMap
+    regionMap(4)
   end
 
   # GET /locations/1

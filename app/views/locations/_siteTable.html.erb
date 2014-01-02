@@ -1,0 +1,25 @@
+
+<div class="fixed-table">
+<div class="table-content">
+  <table class ="table table-bordered table-condensed table-fixed-header" id="dataTable">
+
+    <thead class="header">
+    <tr>
+      <th>Name</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+    </tr>
+    </thead>
+
+    <% @locations.each do |location| %>
+    <tr class="rowElement">
+      <td class="name"><%= location.site %></td>
+      <td class="lat"><%= location.latitude %></td>
+      <td class="lon"><%= location.longitude %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+</div>
+
+
