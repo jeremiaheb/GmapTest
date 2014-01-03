@@ -33,6 +33,14 @@ class LocationsController < ApplicationController
     end
   end
   
+  def flkeysMap
+    regionMap(1)
+  end
+
+  def drtoMap
+    regionMap(2)
+  end
+
   def sefcriMap
     regionMap(3)
   end

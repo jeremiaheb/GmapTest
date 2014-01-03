@@ -3,6 +3,8 @@ GmapTest::Application.routes.draw do
   resources :locations
   match 'sefcriMap' => "locations#sefcriMap"
   match 'usviMap' => "locations#usviMap"
+  match 'flkeysMap' => "locations#flkeysMap"
+  match 'drtoMap' => "locations#drtoMap"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
