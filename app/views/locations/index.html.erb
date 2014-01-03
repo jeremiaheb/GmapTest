@@ -1,24 +1,52 @@
-<h1>Listing locations</h1>
-<table>
-  <tr>
-    <th>Site</th>
-    <th>Latitude</th>
-    <th>Longitude</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
-<% @locations.each do |location| %>
-  <tr>
-    <td><%= location.site %></td>
-    <td><%= location.latitude %></td>
-    <td><%= location.longitude %></td>
-    <td><%= link_to 'Show', location %></td>
-    <td><%= link_to 'Edit', edit_location_path(location) %></td>
-    <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <div id="floatingMap">
+        <h3 class="head1">Map</h3>
+        <div id="map_canvas2" style='width: 100%; height: 600px;'></div>
+        <script>
+    var map;
+    var bounds = new google.maps.LatLngBounds();
+    var mapOptions = {
+        mapTypeId: 'roadmap'
+    };
+                    
+    // Display a map on the page
+    map = new google.maps.Map(document.getElementById("map_canvas2"), mapOptions);
+        
+    // Multiple Markers
+    var markers = [
+        ['FLKEYS', 25.7573, -80.1235, '/flkeysMap'],
+        ['DRTO', 24.61954, -82.86407, '/drtoMap'],
+        ['SEFCRI', 27.184656, -80.042454, '/sefcriMap'],
+        ['USVI', 18.309961, -64.85375, '/usviMap' ]
+    ];
 
-<br />
+    // Loop through our array of markers & place each one on the map  
+    for( i = 0; i < markers.length; i++ ) {
+        var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+        bounds.extend(position);
+        marker = new google.maps.Marker({
+            position: position,
+            map: map
+        });
+
+        marker.setTitle(markers[i][0]);
+        attachMarkerUrl(marker,i);
+
+        // Automatically center the map fitting all markers on the screen
+        map.fitBounds(bounds);
+    }
+    function attachMarkerUrl(marker,num){
+    google.maps.event.addListener(marker, 'click', function(){
+      window.location = markers[num][3]
+    });
+  }
+
+
+
+      </script>
+      </div>
+    </div>
+  </div>

@@ -3,9 +3,14 @@ class LocationsController < ApplicationController
   # GET /locations.json
   def index
     @locations = Location.all
+    @primaryJson = []
+    @alternateJson = []
+    @locations.each do |loc|
+      @primaryJson << { site: loc.site, latitude: loc.latitude, longitude: loc.longitude, level: loc.level, iconCode: loc.getIconCode }
+    end
     respond_to do |format|
       format.html # index.html.erb
-      format.json
+      format.json { render json: @primaryJson.to_json }
     end
   end
 

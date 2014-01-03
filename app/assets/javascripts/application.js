@@ -116,7 +116,7 @@ $(document).ready(function(){
     map.fitBounds(bounds);
   }
 
-google.maps.event.addDomListener(window, 'load', initialize);
+google.maps.event.addDomListener(window, 'load', initialize('map'));
 
 // Sets the map on all markers in the array.
 function setAllMap(map) {
