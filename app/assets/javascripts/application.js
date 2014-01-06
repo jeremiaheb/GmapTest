@@ -63,7 +63,8 @@ $(document).ready(function(){
 
 
   var map;
-  var markers = [];
+  var primaryMarkers = [];
+  var alternateMarkers = [];
 
   function initialize(){
     map = new google.maps.Map(document.getElementById('map_canvas'));
@@ -80,6 +81,8 @@ $(document).ready(function(){
           content: setInfoWindowContent(obj.site, obj.latitude, obj.longitude),
           icon: getMarkerPath(obj.level, obj.iconCode)
       });
+
+      primaryMarkers.push(marker);
      
       google.maps.event.addListener(marker, 'click', function(){
         infowindow.setContent(this.content);
@@ -96,7 +99,7 @@ $(document).ready(function(){
           content: setInfoWindowContent(obj.site, obj.latitude, obj.longitude),
           icon: getMarkerPath(obj.level, obj.iconCode)
       });
-      markers.push(marker);
+      alternateMarkers.push(marker);
      
       google.maps.event.addListener(marker, 'click', function(){
         infowindow.setContent(this.content);
@@ -106,12 +109,14 @@ $(document).ready(function(){
 
      google.maps.event.addListener(map, 'click', function(e) { //important listener          
         var theBounds = map.getBounds();
-          for (var i = 0; i < markers.length; i++) {
-            if (markers[i].visible == true) {
-              console.log(theBounds.contains(markers[i].position));
+        var allMarkers = primaryMarkers.concat(alternateMarkers);
+        var markersInBounds = [];
+          for (var i = 0; i < allMarkers.length; i++) {
+            if (theBounds.contains(allMarkers[i].position)) {
+              markersInBounds.push(allMarkers[i].title);
             }
           };
-                 
+        alert(markersInBounds);
      });
     map.fitBounds(bounds);
   }
@@ -120,8 +125,8 @@ google.maps.event.addDomListener(window, 'load', initialize('map'));
 
 // Sets the map on all markers in the array.
 function setAllMap(map) {
-  for (var i = 0; i < markers.length; i++) {
-    markers[i].setMap(map);
+  for (var i = 0; i < alternateMarkers.length; i++) {
+    alternateMarkers[i].setMap(map);
   }
 }
 
