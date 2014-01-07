@@ -12,11 +12,12 @@
       <th>Demo Complete Date</th>
       <th>Demo Complete Agency</th>
       <th>Status</th>
+      <th>is this Reserved</th>
     </tr>
     </thead>
 
     <% @locations.each do |location| %>
-    <tr class="rowElement">
+      <tr class="rowElement <%= location.is_reserved %>">
       <td class="name"><%= location.site %></td>
       <td class="lat"><%= location.latitude %></td>
       <td class="lon"><%= location.longitude %></td>
@@ -25,6 +26,7 @@
       <td><%= best_in_place location, :demo_complete_date, :type => :date, :nil => "---------", :html_attrs => {:class => "datepicker"} %></td>
       <td><%= best_in_place location, :demo_complete_agency, :type => :input, :nil => "---------" %></td>
       <td><%= best_in_place location, :color, :type => :select, :collection => [[1,"nothing completed"], [2,"all complete"], [3,"fish/lpi complete"], [4,"demo complete"]] %></td>
+      <td><%= best_in_place location, :is_reserved, type: :checkbox, collection: ["No", "Yes"], classes: "isreserved" %></td>
     </tr>
     <% end %>
   </table>

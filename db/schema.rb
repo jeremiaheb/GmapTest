@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140106165442) do
+ActiveRecord::Schema.define(:version => 20140107180358) do
 
   create_table "locations", :force => true do |t|
     t.string   "site"
@@ -22,12 +22,12 @@ ActiveRecord::Schema.define(:version => 20140106165442) do
     t.integer  "level"
     t.integer  "need"
     t.integer  "color"
-    t.integer  "reserved"
     t.integer  "region_id"
     t.string   "fish_complete_agnecy"
     t.date     "fish_complete_date"
     t.string   "demo_complete_agency"
     t.date     "demo_complete_date"
+    t.boolean  "is_reserved"
   end
 
 end

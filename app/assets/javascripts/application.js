@@ -58,7 +58,7 @@ $(document).ready(function(){
           return "/assets/WhiteTriangle.png";
           break;
         case "22":
-          return "/assets/GreenTriangle.png";
+          return "/assets/GreenTriangles.png";
           break;
         case "23":
           return "/assets/YellowTriangle.png";
@@ -89,7 +89,8 @@ $(document).ready(function(){
           map: map,
           title: obj.site,
           content: setInfoWindowContent(obj.site, obj.latitude, obj.longitude),
-          icon: getMarkerPath(obj.level, obj.iconCode)
+          icon: getMarkerPath(obj.level, obj.iconCode),
+          shadow: "assets/OrangeTriangle.png"
       });
 
       primaryMarkers.push(marker);
@@ -157,6 +158,8 @@ $("#showMarkers").on('click', function(){
 $('#clearMarkers').on('click', function(){
   clearMarkers();
 });
+
+
 
 });
 
