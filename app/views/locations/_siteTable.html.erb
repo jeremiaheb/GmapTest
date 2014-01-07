@@ -8,6 +8,9 @@
       <th>Latitude</th>
       <th>Longitude</th>
       <th>Fish/LPI Complete Date</th>
+      <th>Fish/LPI Complete Agency</th>
+      <th>Demo Complete Date</th>
+      <th>Demo Complete Agency</th>
       <th>Status</th>
     </tr>
     </thead>
@@ -18,7 +21,10 @@
       <td class="lat"><%= location.latitude %></td>
       <td class="lon"><%= location.longitude %></td>
       <td><%= best_in_place location, :fish_complete_date, :type => :date, :nil => "---------", :html_attrs => {:class => "datepicker"} %></td>
-      <td title="date complete and agency must be filled in prior"><%= best_in_place location, :color, :type => :select, :collection => [[1,"nothing completed"], [2,"all complete"], [3,"fish/lpi complete"], [4,"demo complete"]], :nil => location.color %></td>
+      <td><%= best_in_place location, :fish_complete_agnecy, :type => :input, :nil => "---------" %></td>
+      <td><%= best_in_place location, :demo_complete_date, :type => :date, :nil => "---------", :html_attrs => {:class => "datepicker"} %></td>
+      <td><%= best_in_place location, :demo_complete_agency, :type => :input, :nil => "---------" %></td>
+      <td><%= best_in_place location, :color, :type => :select, :collection => [[1,"nothing completed"], [2,"all complete"], [3,"fish/lpi complete"], [4,"demo complete"]] %></td>
     </tr>
     <% end %>
   </table>

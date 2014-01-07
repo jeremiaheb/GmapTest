@@ -20,7 +20,7 @@ group :assets do
   gem 'twitter-bootstrap-rails'
   gem 'uglifier', '>= 1.0.3'
 end
-gem 'best_in_place'
+gem 'best_in_place', '~> 2.0.0'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'underscore-rails'
