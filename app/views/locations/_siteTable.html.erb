@@ -1,4 +1,3 @@
-
 <div class="fixed-table">
 <div class="table-content">
   <table class ="table table-bordered table-condensed table-fixed-header" id="dataTable">
@@ -8,6 +7,8 @@
       <th>Name</th>
       <th>Latitude</th>
       <th>Longitude</th>
+      <th>Fish/LPI Complete Date</th>
+      <th>Status</th>
     </tr>
     </thead>
 
@@ -16,6 +17,8 @@
       <td class="name"><%= location.site %></td>
       <td class="lat"><%= location.latitude %></td>
       <td class="lon"><%= location.longitude %></td>
+      <td><%= best_in_place location, :fish_complete_date, :type => :date, :nil => "---------" %></td>
+      <td title="date complete and agency must be filled in prior"><%= best_in_place location, :color, :type => :select, :collection => [[1,"nothing completed"], [2,"all complete"], [3,"fish/lpi complete"], [4,"demo complete"]], :nil => location.color %></td>
     </tr>
     <% end %>
   </table>

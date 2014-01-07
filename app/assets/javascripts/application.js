@@ -12,11 +12,17 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.all
+//= require best_in_place
 //= require twitter/bootstrap
 //= require underscore
 //= require_tree 
 
 $(document).ready(function(){
+
+  $(".best_in_place").best_in_place();
+ 
+  $.extend($.fn.datepicker.defaults, { format: 'dd-mm-yy' });
 
   var primaryLocationData = primaryLocations;
   var alternateLocationData = alternateLocations;

@@ -20,6 +20,15 @@ group :assets do
   gem 'twitter-bootstrap-rails'
   gem 'uglifier', '>= 1.0.3'
 end
-
+gem 'best_in_place'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'underscore-rails'
+
+group :development, :test do
+  gem 'ruby-prof'
+  gem 'rails-erd'
+  gem 'pry-rails'
+  gem 'pry-remote'
+  gem 'quiet_assets'
+end
