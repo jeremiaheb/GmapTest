@@ -15,7 +15,7 @@ class LocationsController < ApplicationController
   end
 
   def regionMap(reg)
-    @locations = Location.region(reg).search(params[:search])
+    @locations = Location.region(reg).order(:site).search(params[:search])
     @primaryLocations = Location.region(reg).primary.all
     @alternateLocations = Location.region(reg).alternate.all
     @primaryJson = []
@@ -100,10 +100,10 @@ class LocationsController < ApplicationController
     respond_to do |format|
       if @location.update_attributes(params[:location])
         format.html { redirect_to @location, notice: 'Location was successfully updated.' }
-        format.json { head :no_content }
+        format.json { respond_with_bip(@location) }
       else
         format.html { render action: "edit" }
-        format.json { render json: @location.errors, status: :unprocessable_entity }
+        format.json { respond_with_bip(@location) }
       end
     end
   end
