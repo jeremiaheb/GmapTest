@@ -35,9 +35,12 @@
     <%= f.label :color %><br />
     <%= f.text_field :color %>
   </div>
-  <div class="field">
+   <div class="field">
     <%= f.label :reserved %><br />
     <%= f.text_field :reserved %>
+  </div> <div class="field">
+    <%= f.label :fish_complete_date %><br />
+    <%= f.text_field :fish_complete_date, :class => "datepicker" %>
   </div>
   <div class="actions">
     <%= f.submit %>

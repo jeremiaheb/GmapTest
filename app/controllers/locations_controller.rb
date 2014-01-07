@@ -16,8 +16,8 @@ class LocationsController < ApplicationController
 
   def regionMap(reg)
     @locations = Location.region(reg).order(:site).search(params[:search])
-    @primaryLocations = Location.region(reg).primary.all
-    @alternateLocations = Location.region(reg).alternate.all
+    @primaryLocations = @locations.select { |location| location.level == 1 }
+    @alternateLocations = @locations.select { |location| location.level == 2 }
     @primaryJson = []
     @alternateJson = []
     @primaryLocations.each do |loc|

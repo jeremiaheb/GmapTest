@@ -17,7 +17,7 @@
       <td class="name"><%= location.site %></td>
       <td class="lat"><%= location.latitude %></td>
       <td class="lon"><%= location.longitude %></td>
-      <td><%= best_in_place location, :fish_complete_date, :type => :date, :nil => "---------" %></td>
+      <td><%= best_in_place location, :fish_complete_date, :type => :date, :nil => "---------", :html_attrs => {:class => "datepicker"} %></td>
       <td title="date complete and agency must be filled in prior"><%= best_in_place location, :color, :type => :select, :collection => [[1,"nothing completed"], [2,"all complete"], [3,"fish/lpi complete"], [4,"demo complete"]], :nil => location.color %></td>
     </tr>
     <% end %>

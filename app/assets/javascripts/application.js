@@ -20,9 +20,13 @@
 
 $(document).ready(function(){
 
-  $(".best_in_place").best_in_place();
- 
-  $.extend($.fn.datepicker.defaults, { format: 'dd-mm-yy' });
+  jQuery(".best_in_place").best_in_place();
+
+  $.datepicker.setDefaults({
+    dateFormat: "yy-mm-dd"
+  });
+  
+  $('.datepicker').datepicker();
 
   var primaryLocationData = primaryLocations;
   var alternateLocationData = alternateLocations;
