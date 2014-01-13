@@ -34,7 +34,11 @@ $(document).ready(function(){
     $('.dataTable').dataTable( {
         //"sDom": "<'row'<'span7'lf>r>t<'row'<'span7'ip>>",
         "sDom": '<"top"ifp<"clear">>rt<"bottom"<"clear">>',
-        "sPaginationType": "bootstrap"
+        //"sPaginationType": "bootstrap",
+        "sScrollY": "400px",
+        "bPaginate": false,
+        "bScrollCollapse": true,
+        "bInfo": false
     } );
 
   var primaryLocationData = primaryLocations;

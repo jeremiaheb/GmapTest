@@ -23,3 +23,18 @@
 .true {
   background-color: yellow !important;
 }
+
+.sideBar {
+  position: relative;
+
+  top: 150px;
+}
+
+#map_canvas {
+  outline: 1px solid red;
+  padding: 10px;
+}
+
+.infoTable {
+  outline: 5px solid red;
+}
