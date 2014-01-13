@@ -33,19 +33,19 @@ class LocationsController < ApplicationController
     end
   end
   
-  def flkeysMap
+  def Florida_Keys
     regionMap(1)
   end
 
-  def drtoMap
+  def DRTO
     regionMap(2)
   end
 
-  def sefcriMap
+  def SEFCRI
     regionMap(3)
   end
 
-  def usviMap
+  def USVI
     regionMap(4)
   end
 

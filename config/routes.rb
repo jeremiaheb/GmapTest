@@ -1,10 +1,10 @@
 GmapTest::Application.routes.draw do
   root :to => 'locations#index'
   resources :locations
-  match 'sefcriMap' => "locations#sefcriMap"
-  match 'usviMap' => "locations#usviMap"
-  match 'flkeysMap' => "locations#flkeysMap"
-  match 'drtoMap' => "locations#drtoMap"
+  match 'SEFCRI' => "locations#SEFCRI"
+  match 'USVI' => "locations#USVI"
+  match 'Florida_Keys' => "locations#Florida_Keys"
+  match 'DRTO' => "locations#DRTO"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
