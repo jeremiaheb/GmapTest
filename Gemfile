@@ -24,6 +24,7 @@ gem 'best_in_place', '~> 2.0.0'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'underscore-rails'
+gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
 
 group :development, :test do
   gem 'ruby-prof'

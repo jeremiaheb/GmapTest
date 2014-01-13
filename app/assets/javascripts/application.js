@@ -16,6 +16,8 @@
 //= require best_in_place
 //= require twitter/bootstrap
 //= require underscore
+//= require dataTables/jquery.dataTables
+//= require dataTables/jquery.dataTables.bootstrap
 //= require_tree 
 
 $(document).ready(function(){
@@ -27,6 +29,13 @@ $(document).ready(function(){
   });
   
   $('.datepicker').datepicker();
+
+  // For fixed width containers
+    $('.dataTable').dataTable( {
+        //"sDom": "<'row'<'span7'lf>r>t<'row'<'span7'ip>>",
+        "sDom": '<"top"ifp<"clear">>rt<"bottom"<"clear">>',
+        "sPaginationType": "bootstrap"
+    } );
 
   var primaryLocationData = primaryLocations;
   var alternateLocationData = alternateLocations;
