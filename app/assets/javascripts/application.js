@@ -134,6 +134,7 @@ $(document).ready(function(){
     
     $.each(alternateLocationData, function(i,obj){
       var latlng = new google.maps.LatLng(obj.latitude, obj.longitude);
+      bounds.extend(latlng);
       var marker = new google.maps.Marker({
           position: latlng,
           title: obj.site,
