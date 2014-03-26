@@ -41,6 +41,23 @@ $(document).ready(function(){
         "bInfo": false
     } );
 
+  function setReservedClass() {
+    $('.isreserved').each(function(){
+      var $reserved = $(this).text();
+      if ( $reserved == "Yes" ) { 
+        $(this).closest("tr").addClass("true"); 
+      } else { $(this).closest("tr").removeClass("true"); }
+    });
+  };
+
+  setReservedClass();
+  
+  $(document).ready(function(){
+  $('.isreserved').on("click", function() {
+    setReservedClass();
+  });
+  });
+
   var primaryLocationData = primaryLocations;
   var alternateLocationData = alternateLocations;
   
