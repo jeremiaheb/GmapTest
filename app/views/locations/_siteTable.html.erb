@@ -26,7 +26,7 @@
       <td><%= best_in_place location, :demo_complete_date, :type => :date, :nil => "---------", :html_attrs => {:class => "datepicker"} %></td>
       <td><%= best_in_place location, :demo_complete_agency, :type => :input, :nil => "---------" %></td>
       <td><%= best_in_place location, :color, :type => :select, :collection => [[1,"not started"], [2,"all complete"], [3,"fish/lpi complete"], [4,"demo complete"]] %></td>
-      <td><%= best_in_place location, :is_reserved, type: :checkbox, collection: ["No", "Yes"], classes: "isreserved" %></td>
+      <td><%= best_in_place location, :is_reserved, type: :checkbox, collection: ["No", "Yes"], classes:"isreserved" %></td>
     </tr>
     <% end %>
   </table>
