@@ -12,7 +12,7 @@ class Location < ActiveRecord::Base
 
   def self.search(search)
     if !search.blank?
-      find(:all, :conditions => ( search ? { :site => search.split( /, */ ) } : [] ))
+      find(:all, :conditions => ( search ? {:site => search.split( /, */ )} : []))
     else
       find(:all)
     end
