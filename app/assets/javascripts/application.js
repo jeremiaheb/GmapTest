@@ -151,10 +151,12 @@ $(document).ready(function(){
 
      google.maps.event.addListener(map, 'click', function(e) { //important listener          
         var theBounds = map.getBounds();
-        var allMarkers = primaryMarkers.concat(alternateMarkers);
+        //var allMarkers = primaryMarkers.concat(alternateMarkers); //for all
+        //primary and alternate
+        var allMarkers = primaryMarkers;
         var markersInBounds = [];
           for (var i = 0; i < allMarkers.length; i++) {
-            if (theBounds.contains(allMarkers[i].position)) {
+            if (theBounds.contains(allMarkers[i].position) ) {
               markersInBounds.push(allMarkers[i].title);
             }
           };
