@@ -27,7 +27,7 @@
 .sideBar {
   position: relative;
 
-  top: 150px;
+  top: 65px;
 }
 
 #map_canvas {
@@ -37,4 +37,8 @@
 
 .infoTable {
   outline: 5px solid red;
+}
+
+tr > td {
+  padding-bottom: 25px !important;
 }

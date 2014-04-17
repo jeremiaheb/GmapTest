@@ -18,7 +18,7 @@
 
     <% @locations.each do |location| %>
       <tr class="rowElement <%= location.is_reserved %>">
-      <td class="name"><%= location.site %></td>
+      <td class="name"><%= link_to location.site, edit_location_path(location) %></td>
       <td class="lat"><%= location.latitude %></td>
       <td class="lon"><%= location.longitude %></td>
       <td><%= best_in_place location, :fish_complete_date, :type => :date, :nil => "---------", :html_attrs => {:class => "datepicker"} %></td>
