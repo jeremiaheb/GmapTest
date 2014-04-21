@@ -43,6 +43,10 @@
   margin-left: 0px !important;
 }
 
+.extentSites p {
+  font-size: 10px !important;
+}
+
 .legend tr > td {
   padding-bottom: 25px !important;
 }
