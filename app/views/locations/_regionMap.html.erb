@@ -4,25 +4,31 @@
   var alternateLocations = <%= raw @alternateJson.to_json %>
 </script>
 
-<div class="container">
-  <div class="row">
-    <div class="span10">
-      <div id="floatingMap">
-        <h3 class="head1"><%= action_name %> Map</h3>
-        <div id="map_canvas" style='width: 100%; height: 500px;'></div>
-          <%= button_tag "Show Alternates", { :class => "btn", :id => "showMarkers" } %>
-          <%= button_tag "Hide Alternates", { :class => "btn", :id => "clearMarkers" } %>
-      </div>
-    </div>
-    <div class="span2 sideBar">
-      <%= render 'legend' %>
+<div class="row">
+  <div class="span2 sideBar extentSites">
+  </div>
+  <div class="span8">
+    <div id="floatingMap">
+      <h3 class="head1"><%= action_name %> Map</h3>
+      <div id="map_canvas" style='width: 100%; height: 500px;'></div>
+      <%= button_tag "Show Alternates", { :class => "btn", :id => "showMarkers" } %>
+      <%= button_tag "Hide Alternates", { :class => "btn", :id => "clearMarkers" } %>
+      <%= button_tag "Fish Sites Available", { :class => "btn", :id => "showFishSites" } %>
+      <%= button_tag "Demo Sites Available", { :class => "btn", :id => "showDemoSites" } %>
     </div>
   </div>
-  <br></br>
-  <div class='row infoTable'>
-    <div class="span12">
-      <%= render 'siteTable' %>
-    </div>
+  <div class="span2 sideBar">
+    <%= render 'legend' %>
   </div>
 </div>
 
+<br></br>
+<div class='row infoTable'>
+  <div class="span12">
+    <%= render 'siteTable' %>
+  </div>
+</div>
+
+<div>
+  <p></p>
+</div>

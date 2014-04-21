@@ -39,6 +39,6 @@
   outline: 5px solid red;
 }
 
-tr > td {
+.legend tr > td {
   padding-bottom: 25px !important;
 }

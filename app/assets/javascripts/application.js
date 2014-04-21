@@ -35,9 +35,10 @@ $(document).ready(function(){
         //"sDom": "<'row'<'span7'lf>r>t<'row'<'span7'ip>>",
         "sDom": '<"top"ifp<"clear">>rt<"bottom"<"clear">>',
         //"sPaginationType": "bootstrap",
-        "sScrollY": "400px",
+        "sScrollY": "300px",
         "bPaginate": false,
         "bScrollCollapse": true,
+        "aoColumns": [{ "sWidth": "5%" }, { "sWidth": "10%" }, { "sWidth": "10%" }, { "sWidth": "10%" }, { "sWidth": "10%" }, { "sWidth": "10%" }, { "sWidth": "10%" }, { "sWidth": "15%" }, { "sWidth": "5%"}],
         "bInfo": false
     } );
 
@@ -66,6 +67,10 @@ $(document).ready(function(){
             "<p> Latitude: " + lat + "</p>"+
             "<p> Longitude: " + lon + "</p>"+
             "</div>"
+  };
+  
+  function setExtentContent(site, lat, lon){
+    return  "<p> <b>" + site + ": </b>" + lat + "," + lon + "</p>"
   };
 
   function getMarkerPath(iconLevel, iconCode) {
@@ -119,7 +124,9 @@ $(document).ready(function(){
           map: map,
           title: obj.site,
           content: setInfoWindowContent(obj.site, obj.latitude, obj.longitude),
+          extentContent: setExtentContent(obj.site, obj.latitude, obj.longitude),
           icon: getMarkerPath(obj.level, obj.iconCode),
+          iconCode: obj.iconCode,
           shadow: "assets/OrangeTriangle.png"
       });
 
@@ -184,6 +191,32 @@ function showMarkers() {
   setAllMap(map);
 }
 
+function showFishSites() {
+         var theBounds = map.getBounds();
+        //var allMarkers = primaryMarkers.concat(alternateMarkers); //for all
+        //primary and alternate
+        var allMarkers = primaryMarkers;
+        var markersInBounds = [];
+          for (var i = 0; i < allMarkers.length; i++) {
+            if (theBounds.contains(allMarkers[i].position) && ~$.inArray(allMarkers[i].iconCode,["11","21","24"]) ) {
+              $(".extentSites").append(allMarkers[i].extentContent);
+            }
+          };
+}
+
+function showDemoSites() {
+         var theBounds = map.getBounds();
+        //var allMarkers = primaryMarkers.concat(alternateMarkers); //for all
+        //primary and alternate
+        var allMarkers = primaryMarkers;
+        var markersInBounds = [];
+          for (var i = 0; i < allMarkers.length; i++) {
+            if (theBounds.contains(allMarkers[i].position) && ~$.inArray(allMarkers[i].iconCode,["21","23"]) ) {
+              $(".extentSites").append(allMarkers[i].extentContent);
+            }
+          };
+}
+
 $("#showMarkers").on('click', function(){
   showMarkers();
 });
@@ -192,7 +225,17 @@ $('#clearMarkers').on('click', function(){
   clearMarkers();
 });
 
+$('#showFishSites').on('click', function(){
+  $(".extentSites").empty();
+  $(".extentSites").append("<h6> Fish Sites Available </h6>")
+  showFishSites();
+});
 
+$('#showDemoSites').on('click', function(){
+  $(".extentSites").empty();
+  $(".extentSites").append("<h6> Demo Sites Available </h6>")
+  showDemoSites();
+});
 
 });
 
