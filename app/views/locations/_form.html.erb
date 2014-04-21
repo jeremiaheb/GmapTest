@@ -35,21 +35,21 @@
   <div class="control-group">
     <label class="control-label">Level</label>
     <div class="controls">
-      <%= f.select :level, options_for_select( [["Primary",1], ["Alternate",2]] ) %>
+      <%= f.select :level, [["Primary",1], ["Alternate",2]] %>
     </div>
   </div>
 
   <div class="control-group">
     <label class="control-label">Sampled Types Needed</label>
     <div class="controls">
-      <%= f.select :need, options_for_select( [["Fish",1], ["Fish and Demo",2]] ) %>
+      <%= f.select :need, [["Fish",1], ["Fish and Demo",2]] %>
     </div>
   </div>
 
   <div class="control-group">
     <label class="control-label">Completion Status</label>
     <div class="controls">
-      <%= f.select :color, options_for_select( [["Nothing Complete",1], ["All Complete",2],["Fish Only Complete",3], ["Demo Only Complete",4]] ) %>
+      <%= f.select :color, [["Nothing Complete",1], ["All Complete",2],["Fish Only Complete",3], ["Demo Only Complete",4]] %>
     </div>
   </div>
 
