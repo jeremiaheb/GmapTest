@@ -174,6 +174,11 @@ $(document).ready(function(){
 
 google.maps.event.addDomListener(window, 'load', initialize('map'));
 
+
+function refreshMap() {
+  location.reload();
+}
+
 // Sets the map on all markers in the array.
 function setAllMap(map) {
   for (var i = 0; i < alternateMarkers.length; i++) {
@@ -216,6 +221,10 @@ function showDemoSites() {
             }
           };
 }
+
+$("#refreshMap").on('click', function(){
+  refreshMap();
+});
 
 $("#showMarkers").on('click', function(){
   showMarkers();

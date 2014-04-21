@@ -1,3 +1,4 @@
+<div class="form-horizontal">
 <%= form_for(@location) do |f| %>
   <% if @location.errors.any? %>
     <div id="error_explanation">
@@ -10,36 +11,57 @@
       </ul>
     </div>
   <% end %>
+  <div class="control-group">
+    <label class="control-label">Site</label>
+    <div class="controls">
+      <%= f.text_field :site %>
+    </div>
+  </div>
 
-  <div class="field">
-    <%= f.label :site %><br />
-    <%= f.text_field :site %>
+  <div class="control-group">
+    <label class="control-label">Latitude</label>
+    <div class="controls">
+      <%= f.text_field :latitude %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :latitude %><br />
-    <%= f.text_field :latitude %>
+
+  <div class="control-group">
+    <label class="control-label">Longitude</label>
+    <div class="controls">
+      <%= f.text_field :longitude %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :longitude %><br />
-    <%= f.text_field :longitude %>
+
+  <div class="control-group">
+    <label class="control-label">Level</label>
+    <div class="controls">
+      <%= f.select :level, options_for_select( [["Primary",1], ["Alternate",2]] ) %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :level %><br />
-    <%= f.text_field :level %>
+
+  <div class="control-group">
+    <label class="control-label">Sampled Types Needed</label>
+    <div class="controls">
+      <%= f.select :need, options_for_select( [["Fish",1], ["Fish and Demo",2]] ) %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :need %><br />
-    <%= f.text_field :need %>
+
+  <div class="control-group">
+    <label class="control-label">Completion Status</label>
+    <div class="controls">
+      <%= f.select :color, options_for_select( [["Nothing Complete",1], ["All Complete",2],["Fish Only Complete",3], ["Demo Only Complete",4]] ) %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :color %><br />
-    <%= f.text_field :color %>
+
+  <div class="control-group">
+    <label class="control-label">Is Reserved</label>
+    <div class="controls">
+      <%= f.check_box :is_reserved %>
+    </div>
   </div>
-   <div class="field">
-    <%= f.label :is_reserved %><br />
-    <%= f.check_box :is_reserved %>
-  </div> 
-    <div class="actions">
+
+  <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+</div>
