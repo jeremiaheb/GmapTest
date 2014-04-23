@@ -77,8 +77,8 @@ $(document).ready(function(){
     if (iconLevel == 2) { 
       return "assets/mm_20_black.png";
      }
-    else if ( iconCode >= 30 ) {
-      return "assets/mm_20_purple.png";
+    else if ( iconLevel == 3 ) {
+      return "assets/Cross.png";
     }
     else {  
       switch (iconCode)
