@@ -191,7 +191,7 @@ function showFishSites() {
         var markersInBounds = [];
           for (var i = 0; i < allMarkers.length; i++) {
             if (theBounds.contains(allMarkers[i].position) && ~$.inArray(allMarkers[i].iconCode,["11","21","24"]) ) {
-              $(".extentSites").append(allMarkers[i].extentContent);
+              $(".modal-body").append(allMarkers[i].extentContent);
             }
           };
 }
@@ -204,7 +204,7 @@ function showDemoSites() {
         var markersInBounds = [];
           for (var i = 0; i < allMarkers.length; i++) {
             if (theBounds.contains(allMarkers[i].position) && ~$.inArray(allMarkers[i].iconCode,["21","23"]) ) {
-              $(".extentSites").append(allMarkers[i].extentContent);
+              $(".modal-body").append(allMarkers[i].extentContent);
             }
           };
 }
@@ -213,24 +213,26 @@ $("#refreshMap").on('click', function(){
   refreshMap();
 });
 
-$("#showMarkers").on('click', function(){
-  showMarkers();
+//$("#showMarkers").on('click', function(){
+  //showMarkers();
+//});
+
+//$('#clearMarkers').on('click', function(){
+  //clearMarkers();
+//});
+
+$("#toggleMarkers").on('click', function(){
+  return (this.tog = !this.tog) ? showMarkers() : clearMarkers();
 });
 
-$('#clearMarkers').on('click', function(){
-  clearMarkers();
-});
-
-$('#showFishSites').on('click', function(){
-  $(".extentSites").empty();
-  $(".extentSites").append("<h6> Fish Sites Available </h6>")
-  showFishSites();
-});
-
-$('#showDemoSites').on('click', function(){
-  $(".extentSites").empty();
-  $(".extentSites").append("<h6> Demo Sites Available </h6>")
+$('#demoModal').on('show.bs.modal', function(e){
+  $(".modal-body").empty();
   showDemoSites();
+});
+
+$('#fishModal').on('show.bs.modal', function(e){
+  $(".modal-body").empty();
+  showFishSites();
 });
 
 });

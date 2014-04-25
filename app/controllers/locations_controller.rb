@@ -3,14 +3,14 @@ class LocationsController < ApplicationController
   # GET /locations.json
   def index
     @locations = Location.all
-    @primaryJson = []
-    @alternateJson = []
-    @locations.each do |loc|
-      @primaryJson << { site: loc.site, latitude: loc.latitude, longitude: loc.longitude, level: loc.level, iconCode: loc.getIconCode }
-    end
+    #@primaryJson = []
+    #@alternateJson = []
+    #@locations.each do |loc|
+      #@primaryJson << { site: loc.site, latitude: loc.latitude, longitude: loc.longitude, level: loc.level, iconCode: loc.getIconCode }
+    #end
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @primaryJson.to_json }
+      format.json { render json: @locations.to_json }
     end
   end
 
@@ -96,10 +96,13 @@ class LocationsController < ApplicationController
   # PUT /locations/1.json
   def update
     @location = Location.find(params[:id])
+    
+    @previousMap = Location.WhereAmI(@location.region_id)
 
+    #binding.pry
     respond_to do |format|
       if @location.update_attributes(params[:location])
-        format.html { redirect_to @location, notice: 'Location was successfully updated.' }
+        format.html { redirect_to @previousMap, notice: 'Location was successfully updated.' }
         format.json { respond_with_bip(@location) }
       else
         format.html { render action: "edit" }

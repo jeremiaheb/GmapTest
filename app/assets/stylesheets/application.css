@@ -27,7 +27,7 @@
 .sideBar {
   position: relative;
 
-  top: 15px;
+  /*top: 15px;*/
 }
 
 #map_canvas {

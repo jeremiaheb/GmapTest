@@ -8,7 +8,19 @@ class Location < ActiveRecord::Base
   def getIconCode
     [self.need, self.color].join("")
   end
-
+  
+  def self.WhereAmI(region)
+    case region
+    when 1
+      :Florida_Keys
+    when 2
+      :DRTO
+    when 3
+      :SEFCRI
+    when 4
+      :USVI
+    end
+  end
 
   def self.search(search)
     if !search.blank?
