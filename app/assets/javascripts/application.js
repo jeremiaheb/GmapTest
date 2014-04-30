@@ -68,9 +68,12 @@ $(document).ready(function(){
             "<p> Longitude: " + lon + "</p>"+
             "</div>"
   };
-  
+
   function setExtentContent(site, lat, lon){
-    return  "<p> <b>" + site + ": </b>" + lat + "," + lon + "</p>"
+    return  "<tr> <td>" + site + "</td>" +
+                  "<td>" + lat + "</td>" +
+                  "<td>" + lon + "</td>" +                  
+            "</tr>"
   };
 
   function getMarkerPath(iconLevel, iconCode) {
@@ -127,7 +130,7 @@ $(document).ready(function(){
           extentContent: setExtentContent(obj.site, obj.latitude, obj.longitude),
           icon: getMarkerPath(obj.level, obj.iconCode),
           iconCode: obj.iconCode,
-          shadow: "assets/OrangeTriangle.png"
+          level: obj.level
       });
 
       primaryMarkers.push(marker);
@@ -185,26 +188,20 @@ function showMarkers() {
 
 function showFishSites() {
          var theBounds = map.getBounds();
-        //var allMarkers = primaryMarkers.concat(alternateMarkers); //for all
-        //primary and alternate
         var allMarkers = primaryMarkers;
-        var markersInBounds = [];
           for (var i = 0; i < allMarkers.length; i++) {
-            if (theBounds.contains(allMarkers[i].position) && ~$.inArray(allMarkers[i].iconCode,["11","21","24"]) ) {
-              $(".modal-body").append(allMarkers[i].extentContent);
+            if (allMarkers[i].level != "3" && ~$.inArray(allMarkers[i].iconCode,["11","21","24"]) && theBounds.contains(allMarkers[i].position)) {
+              $("#fishModalTable > tbody:last").append(allMarkers[i].extentContent);
             }
           };
 }
 
 function showDemoSites() {
          var theBounds = map.getBounds();
-        //var allMarkers = primaryMarkers.concat(alternateMarkers); //for all
-        //primary and alternate
         var allMarkers = primaryMarkers;
-        var markersInBounds = [];
           for (var i = 0; i < allMarkers.length; i++) {
-            if (theBounds.contains(allMarkers[i].position) && ~$.inArray(allMarkers[i].iconCode,["21","23"]) ) {
-              $(".modal-body").append(allMarkers[i].extentContent);
+            if (allMarkers[i].level != "3" && ~$.inArray(allMarkers[i].iconCode,["21","23"]) && theBounds.contains(allMarkers[i].position)) {
+              $("#demoModalTable > tbody:last").append(allMarkers[i].extentContent);
             }
           };
 }
@@ -213,25 +210,19 @@ $("#refreshMap").on('click', function(){
   refreshMap();
 });
 
-//$("#showMarkers").on('click', function(){
-  //showMarkers();
-//});
 
-//$('#clearMarkers').on('click', function(){
-  //clearMarkers();
-//});
 
 $("#toggleMarkers").on('click', function(){
   return (this.tog = !this.tog) ? showMarkers() : clearMarkers();
 });
 
 $('#demoModal').on('show.bs.modal', function(e){
-  $(".modal-body").empty();
+  $(".modalTable tbody > tr").remove();
   showDemoSites();
 });
 
 $('#fishModal').on('show.bs.modal', function(e){
-  $(".modal-body").empty();
+  $(".modalTable tbody > tr").remove();
   showFishSites();
 });
 
