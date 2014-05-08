@@ -3,31 +3,33 @@
 #
 
 
-Location.delete_all
-open("db/SeedData/fkeys.csv") do |samples|
+#Location.delete_all
+#open("db/SeedData/fkeys.csv") do |samples|
+  #samples.read.each_line do |sample|
+    #id, lat, lon, reg, level, need, color, reserve = sample.chomp.split(",")
+    #Location.create(:site => id, :latitude => lat, :longitude => lon, :region_id => reg, :level => level, :need => need, :color => color, :is_reserved => reserve)
+  #end
+#end
+
+#open("db/SeedData/drto.csv") do |samples|
+  #samples.read.each_line do |sample|
+    #id, lat, lon, reg, level, need, color, reserve = sample.chomp.split(",")
+    #Location.create(:site => id, :latitude => lat, :longitude => lon, :region_id => reg, :level => level, :need => need, :color => color, :is_reserved => reserve)
+  #end
+#end
+
+Location.delete_all("region_id = 3")
+open("db/SeedData/SEFCRI2014.csv") do |samples|
   samples.read.each_line do |sample|
-    id, lat, lon, reg, level, need, color, reserve = sample.chomp.split(",")
-    Location.create(:site => id, :latitude => lat, :longitude => lon, :region_id => reg, :level => level, :need => need, :color => color, :is_reserved => reserve)
+    id, lat, lon, reg, level, need, color, reserve, depth = sample.chomp.split(",")
+    Location.create(:site => id, :latitude => lat, :longitude => lon, :region_id => reg, :level => level, :need => need, :color => color, :is_reserved => reserve, :depth => depth)
   end
 end
 
-open("db/SeedData/drto.csv") do |samples|
+Location.delete_all("region_id = 4")
+open("db/SeedData/PuertoRico2014.csv") do |samples|
   samples.read.each_line do |sample|
-    id, lat, lon, reg, level, need, color, reserve = sample.chomp.split(",")
-    Location.create(:site => id, :latitude => lat, :longitude => lon, :region_id => reg, :level => level, :need => need, :color => color, :is_reserved => reserve)
-  end
-end
-
-open("db/SeedData/sefcri.csv") do |samples|
-  samples.read.each_line do |sample|
-    id, lat, lon, reg, level, need, color, reserve = sample.chomp.split(",")
-    Location.create(:site => id, :latitude => lat, :longitude => lon, :region_id => reg, :level => level, :need => need, :color => color, :is_reserved => reserve)
-  end
-end
-
-open("db/SeedData/PR2014.txt") do |samples|
-  samples.read.each_line do |sample|
-    id, lat, lon, reg, level, need, color, reserve = sample.chomp.split(",")
-    Location.create(:site => id, :latitude => lat, :longitude => lon, :region_id => reg, :level => level, :need => need, :color => color, :is_reserved => reserve)
+    id, lat, lon, reg, level, need, color, reserve, depth = sample.chomp.split(",")
+    Location.create(:site => id, :latitude => lat, :longitude => lon, :region_id => reg, :level => level, :need => need, :color => color, :is_reserved => reserve, :depth => depth)
   end
 end

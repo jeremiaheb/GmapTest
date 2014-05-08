@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140107180358) do
+ActiveRecord::Schema.define(:version => 20140508160157) do
 
   create_table "locations", :force => true do |t|
     t.string   "site"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20140107180358) do
     t.string   "demo_complete_agency"
     t.date     "demo_complete_date"
     t.boolean  "is_reserved"
+    t.integer  "depth"
   end
 
 end

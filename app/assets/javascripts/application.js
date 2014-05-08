@@ -62,8 +62,9 @@ $(document).ready(function(){
   var primaryLocationData = primaryLocations;
   var alternateLocationData = alternateLocations;
   
-  function setInfoWindowContent(site, lat, lon){
+  function setInfoWindowContent(site, lat, lon, depth){
     return  "<div id='content'> Site ID: <b>" + site + "</b>"+
+            "<p> Depth: " + depth + "</p>"+
             "<p> Latitude: " + lat + "</p>"+
             "<p> Longitude: " + lon + "</p>"+
             "</div>"
@@ -127,7 +128,7 @@ $(document).ready(function(){
         position: latlng,
           map: map,
           title: obj.site,
-          content: setInfoWindowContent(obj.site, obj.latitude, obj.longitude),
+          content: setInfoWindowContent(obj.site, obj.latitude, obj.longitude, obj.depth),
           extentContent: setExtentContent(obj.site, obj.latitude, obj.longitude),
           icon: getMarkerPath(obj.level, obj.iconCode),
           iconCode: obj.iconCode,
@@ -149,7 +150,7 @@ $(document).ready(function(){
       var marker = new google.maps.Marker({
           position: latlng,
           title: obj.site,
-          content: setInfoWindowContent(obj.site, obj.latitude, obj.longitude),
+          content: setInfoWindowContent(obj.site, obj.latitude, obj.longitude, obj.depth),
           icon: getMarkerPath(obj.level, obj.iconCode)
       });
       alternateMarkers.push(marker);
@@ -160,8 +161,10 @@ $(document).ready(function(){
       });
     });
 
-    habitatLayers["SEFCRI"] = new google.maps.KmlLayer('https://dl.dropboxusercontent.com/u/7140118/50mGridHab.kmz', {preserveViewport: true});
     habitatLayers["Florida_Keys"] = new google.maps.KmlLayer('https://dl.dropboxusercontent.com/u/7140118/keysHabmap2.kmz', {preserveViewport: true});
+    habitatLayers["SEFCRI"] = new google.maps.KmlLayer('https://dl.dropboxusercontent.com/u/7140118/50mGridHab.kmz', {preserveViewport: true});
+    habitatLayers["DRTO"] = new google.maps.KmlLayer('https://dl.dropboxusercontent.com/u/7140118/keysHabmap2.kmz', {preserveViewport: true});
+    habitatLayers["USVI"] = new google.maps.KmlLayer('https://dl.dropboxusercontent.com/u/7140118/PR.kmz', {preserveViewport: true});
 
     map.fitBounds(bounds);
   }
