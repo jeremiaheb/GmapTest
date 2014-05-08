@@ -113,6 +113,7 @@ $(document).ready(function(){
   var map;
   var primaryMarkers = [];
   var alternateMarkers = [];
+  var habitatLayers = {};
 
   function initialize(){
     map = new google.maps.Map(document.getElementById('map_canvas'));
@@ -159,6 +160,9 @@ $(document).ready(function(){
       });
     });
 
+    habitatLayers["SEFCRI"] = new google.maps.KmlLayer('https://dl.dropboxusercontent.com/u/7140118/50mGridHab.kmz', {preserveViewport: true});
+    habitatLayers["Florida_Keys"] = new google.maps.KmlLayer('https://dl.dropboxusercontent.com/u/7140118/keysHabmap2.kmz', {preserveViewport: true});
+
     map.fitBounds(bounds);
   }
 
@@ -168,6 +172,14 @@ google.maps.event.addDomListener(window, 'load', initialize('map'));
 function refreshMap() {
   location.reload();
 }
+
+function setHabitatMap(region) {
+    habitatLayers[region].setMap(map);
+};
+
+function clearHabitatMap(region){
+  habitatLayers[region].setMap(null);  
+};
 
 // Sets the map on all markers in the array.
 function setAllMap(map) {
@@ -210,7 +222,10 @@ $("#refreshMap").on('click', function(){
   refreshMap();
 });
 
-
+$('#toggleHabitatMap').on('click', function(){
+  var $region = $(this).closest('body').attr('class').split(' ')[1];
+  return (this.tog = !this.tog) ? setHabitatMap($region) : clearHabitatMap($region);
+});
 
 $("#toggleMarkers").on('click', function(){
   return (this.tog = !this.tog) ? showMarkers() : clearMarkers();
