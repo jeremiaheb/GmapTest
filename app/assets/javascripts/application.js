@@ -79,10 +79,10 @@ $(document).ready(function(){
 
   function getMarkerPath(iconLevel, iconCode) {
     if (iconLevel == 2) { 
-      return "assets/mm_20_black.png";
+      return "/assets/mm_20_black.png";
      }
     else if ( iconLevel == 3 ) {
-      return "assets/Cross.png";
+      return "/assets/Cross.png";
     }
     else {  
       switch (iconCode)
@@ -243,6 +243,25 @@ $('#fishModal').on('show.bs.modal', function(e){
   $(".modalTable tbody > tr").remove();
   showFishSites();
 });
+
+
+var iconList = [];
+function CountMarkers(){
+  $.each(primaryMarkers, function(i,obj){
+    iconList.push(obj.icon);
+  });
+};
+
+CountMarkers();
+console.log(_.countBy(iconList)['/assets/mm_20_white.png']);
+
+$('#FishOnlyNotComplete').text(_.countBy(iconList)['/assets/mm_20_white.png']);
+$('#FishOnlyComplete').text(_.countBy(iconList)['/assets/mm_20_green.png']);
+$('#AllThreeNotComplete').text(_.countBy(iconList)['/assets/WhiteTriangle.png']);
+$('#AllThreeComplete').text(_.countBy(iconList)['/assets/GreenTriangles.png']);
+$('#AllThreeFishComplete').text(_.countBy(iconList)['/assets/YellowTriangle.png']);
+$('#AllThreeDemoComplete').text(_.countBy(iconList)['/assets/OrangeTriangle.png']);
+$('#NoHabitat').text(_.countBy(iconList)['/assets/Cross.png']);
 
 });
 

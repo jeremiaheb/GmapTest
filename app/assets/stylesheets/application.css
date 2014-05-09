@@ -52,3 +52,7 @@
 .legend tr > td {
   padding-bottom: 25px !important;
 }
+
+.legend tr > th {
+  text-align: center !important;
+}
