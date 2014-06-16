@@ -3,13 +3,13 @@
 #
 
 
-Location.delete_all("region_id = 1")
-open("db/SeedData/fk14_samplist.csv") do |samples|
-  samples.read.each_line do |sample|
-    id, lat, lon, reg, level, need, color, reserve, depth = sample.chomp.split(",")
-    Location.create(:site => id, :latitude => lat, :longitude => lon, :region_id => reg, :level => level, :need => need, :color => color, :is_reserved => reserve, :depth => depth)
-  end
-end
+#Location.delete_all("region_id = 1")
+#open("db/SeedData/fk14_samplist.csv") do |samples|
+  #samples.read.each_line do |sample|
+    #id, lat, lon, reg, level, need, color, reserve, depth = sample.chomp.split(",")
+    #Location.create(:site => id, :latitude => lat, :longitude => lon, :region_id => reg, :level => level, :need => need, :color => color, :is_reserved => reserve, :depth => depth)
+  #end
+#end
 
 #Location.delete_all("region_id = 2")
 #open("db/SeedData/drto.csv") do |samples|
