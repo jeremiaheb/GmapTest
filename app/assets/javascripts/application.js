@@ -161,9 +161,9 @@ $(document).ready(function(){
       });
     });
 
-    habitatLayers["Florida_Keys"] = new google.maps.KmlLayer('https://dl.dropboxusercontent.com/u/7140118/keysHabmap2.kmz', {preserveViewport: true});
+    habitatLayers["Florida_Keys"] = new google.maps.KmlLayer('https://dl.dropboxusercontent.com/u/7140118/FKeys_HabMap.kmz', {preserveViewport: true});
     habitatLayers["SEFCRI"] = new google.maps.KmlLayer('https://dl.dropboxusercontent.com/u/7140118/SEFCRI2014Hab.kmz', {preserveViewport: true});
-    habitatLayers["DRTO"] = new google.maps.KmlLayer('https://dl.dropboxusercontent.com/u/7140118/keysHabmap2.kmz', {preserveViewport: true});
+    habitatLayers["DRTO"] = new google.maps.KmlLayer('https://dl.dropboxusercontent.com/u/7140118/FKeys_HabMap.kmz', {preserveViewport: true});
     habitatLayers["USVI"] = new google.maps.KmlLayer('https://dl.dropboxusercontent.com/u/7140118/PR_HabDiss.kmz', {preserveViewport: true});
 
     map.fitBounds(bounds);
