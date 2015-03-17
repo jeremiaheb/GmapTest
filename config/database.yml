@@ -18,7 +18,7 @@ development:
   database: gmaptest_development
   pool: 5
   host: localHost
-  username: developer
+  username: jeremiaheb
   password: noaaRails
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -44,8 +44,8 @@ test:
   encoding: unicode
   database: GmapTest_test
   pool: 5
-  username: GmapTest
-  password:
+  username: jeremiaheb
+  password: noaaRails
 
 production:
   adapter: postgresql
