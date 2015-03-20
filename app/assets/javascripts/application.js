@@ -11,13 +11,14 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require jquery_ujs
-//= require jquery.ui.all
 //= require best_in_place
+//= require jquery-ui
+//= require best_in_place.jquery-ui
+//= require jquery_ujs
+//= require dataTables/jquery.dataTables
+//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require twitter/bootstrap
 //= require underscore
-//= require dataTables/jquery.dataTables
-//= require dataTables/jquery.dataTables.bootstrap
 //= require_tree 
 
 $(document).ready(function(){
@@ -253,7 +254,6 @@ function CountMarkers(){
 };
 
 CountMarkers();
-console.log(_.countBy(iconList)['/assets/mm_20_white.png']);
 
 $('#FishOnlyNotComplete').text(_.countBy(iconList)['/assets/mm_20_white.png']);
 $('#FishOnlyComplete').text(_.countBy(iconList)['/assets/mm_20_green.png']);

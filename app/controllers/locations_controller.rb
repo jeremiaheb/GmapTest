@@ -14,6 +14,8 @@ class LocationsController < ApplicationController
     @locations = Location.region(reg).order(:site).search(params[:search])
     @primaryLocations = @locations.select { |location| location.level == 1 || location.level == 3 }
     @alternateLocations = @locations.select { |location| location.level == 2 }
+    #@primaryLocations = @locations.where(level: [1,3])
+    #@alternateLocations = @locations.where(level: 2)
     @primaryJson = []
     @alternateJson = []
     @primaryLocations.each do |loc|

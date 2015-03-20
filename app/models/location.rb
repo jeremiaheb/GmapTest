@@ -1,9 +1,9 @@
 class Location < ActiveRecord::Base
   attr_accessible :latitude, :longitude, :site, :level, :need, :color, :is_reserved, :region_id, :fish_complete_date, :fish_complete_agnecy, :demo_complete_agency, :demo_complete_date, :depth
 
-  scope :region,          lambda { |reg| where("region_id = ?", reg) }
-  scope :alternate,       lambda { where(level: 2) }
-  scope :primary,         lambda { where(level: 1) }
+  scope :region,          lambda { |reg| where("region_id = ?", reg).load }
+  scope :alternate,       lambda { where(level: 2).load }
+  scope :primary,         lambda { where(level: 1).load }
 
   def getIconCode
     "#{self.need}#{self.color}"
@@ -26,7 +26,7 @@ class Location < ActiveRecord::Base
     if !search.blank?
       find(:all, :conditions => ( search ? {:site => search.split( /, */ )} : []))
     else
-      find(:all)
+      all
     end
   end
 
