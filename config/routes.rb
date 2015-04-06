@@ -5,6 +5,8 @@ GmapTest::Application.routes.draw do
   match 'Puerto_Rico' => "locations#Puerto_Rico", via: [:get, :post]
   match 'Florida_Keys' => "locations#Florida_Keys", via: [:get, :post]
   match 'DRTO' => "locations#DRTO", via: [:get, :post]
+  match 'STX' => "locations#STX", via: [:get, :post]
+  match 'STT_STJ' => "locations#STT_STJ", via: [:get, :post]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

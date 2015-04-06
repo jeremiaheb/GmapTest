@@ -47,6 +47,14 @@ class LocationsController < ApplicationController
     regionMap(4)
   end
 
+  def STX
+    regionMap(5)
+  end
+  
+  def STT_STJ
+    regionMap(6)
+  end
+
   # GET /locations/1
   # GET /locations/1.json
   def show

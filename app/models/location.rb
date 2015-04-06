@@ -19,6 +19,10 @@ class Location < ActiveRecord::Base
       :SEFCRI
     when 4
       :Puerto_Rico
+    when 5
+      :STX
+    when 6
+      :STT_STJ
     end
   end
 
