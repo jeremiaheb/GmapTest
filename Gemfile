@@ -37,7 +37,7 @@ end
 
 group :production do
   gem 'rails_12factor'
+  gem 'protected_attributes'
 end
 
 gem 'puma'
-gem 'therubyracer'
