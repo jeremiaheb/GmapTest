@@ -18,7 +18,7 @@ class Location < ActiveRecord::Base
     when 3
       :SEFCRI
     when 4
-      :USVI
+      :Puerto_Rico
     end
   end
 

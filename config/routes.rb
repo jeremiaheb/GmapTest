@@ -2,7 +2,7 @@ GmapTest::Application.routes.draw do
   root :to => 'locations#index'
   resources :locations
   match 'SEFCRI' => "locations#SEFCRI", via: [:get, :post]
-  match 'USVI' => "locations#USVI", via: [:get, :post]
+  match 'Puerto_Rico' => "locations#Puerto_Rico", via: [:get, :post]
   match 'Florida_Keys' => "locations#Florida_Keys", via: [:get, :post]
   match 'DRTO' => "locations#DRTO", via: [:get, :post]
 

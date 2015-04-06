@@ -43,7 +43,7 @@ class LocationsController < ApplicationController
     regionMap(3)
   end
 
-  def USVI
+  def Puerto_Rico
     regionMap(4)
   end
 
