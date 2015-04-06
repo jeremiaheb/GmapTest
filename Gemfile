@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.2.1'
 gem 'rails', '4.0.2'
 
 # Bundle edge Rails instead:
@@ -32,4 +33,8 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-remote'
   gem 'quiet_assets'
+end
+
+group :production do
+  gem 'rails_12factor'
 end
